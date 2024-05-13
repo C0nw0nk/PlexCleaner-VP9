@@ -33,7 +33,7 @@ set looping=0
 
 :: End Edit DO NOT TOUCH ANYTHING BELOW THIS POINT UNLESS YOU KNOW WHAT YOUR DOING!
 
-TITLE PlexCleaner - AV1
+TITLE PlexCleaner - VP9
 
 :: Make script configurable via command line with arguements example
 :: "C:\path\PlexCleaner_VP9.cmd" "\\NAS\path" "pause_window" "wait_interval" "looping" 2^>nul
@@ -75,6 +75,10 @@ echo >"%root_path:"=%win-x64\PlexCleaner.log"
 )
 
 "%root_path:"=%win-x64\PlexCleaner" deinterlace --settingsfile "%root_path:"=%win-x64\PlexCleaner.json" --logfile "%root_path:"=%win-x64\PlexCleaner.log" --mediafiles "%media_path:"=%"
+
+if exist "%root_path:"=%DisableForceSubtitles.cmd" (
+call "%root_path:"=%DisableForceSubtitles.cmd" "%media_path:"=%" "1" "1" "0" "0" "0" "0"
+)
 
 ::End PlexCleaner code
 
